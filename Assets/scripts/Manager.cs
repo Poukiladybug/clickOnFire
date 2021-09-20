@@ -77,12 +77,14 @@ public class Manager : MonoBehaviour
             if (y >= 3)
             {
                 item.GetComponent<Renderer>().material = bonusMaterial;
-                bonusScore = 3; 
-            }
+               
+                item.GetComponent<ItemBehaviour>().isBlue = true;
+        }
             else
             {
                 item.GetComponent<Renderer>().material = defaultMaterial;
-                bonusScore = 1;
+                
+
             }
             item.GetComponent<ItemBehaviour>().manager=this;
             timer = 1f;
@@ -93,7 +95,9 @@ public class Manager : MonoBehaviour
 
     public void DestroyGameObject(GameObject cube)
     {
-        score += bonusScore;
+        int value = 1;
+        if (cube.GetComponent<ItemBehaviour>().isBlue) value = 3;
+        score += value;
         PlayerPrefs.SetInt("score", score); 
         Destroy(cube);
         gameObjects.Remove(cube);
@@ -129,7 +133,10 @@ public class Manager : MonoBehaviour
 
         if (anotherTimer <= 0f)
         {
+            int malus = -1;
+            if (.GetComponent<ItemBehaviour>().isBlue) malus = -3;
             Destroy(gameObjects[gameObjects.Count-1]);
+            score -= malus;
             gameObjects.Remove(gameObjects[gameObjects.Count-1]);
            
             anotherTimer = Random.Range(3f, 5f);

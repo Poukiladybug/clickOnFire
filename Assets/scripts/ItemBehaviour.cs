@@ -6,6 +6,7 @@ public class ItemBehaviour : MonoBehaviour
 {
     public Manager manager;
     public bool mouseOver;
+    public bool isBlue = false;
 
     private void OnMouseOver()
     {
