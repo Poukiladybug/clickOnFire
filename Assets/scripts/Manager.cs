@@ -24,7 +24,7 @@ public class Manager : MonoBehaviour
 
     private float timer = 0.5f;
     private float otherTimer = 5f;
-    public float anotherTimer;
+    //public float anotherTimer;
 
     public List<GameObject> gameObjects = new List<GameObject>();
     private int nbrCube = 1;
@@ -38,11 +38,11 @@ public class Manager : MonoBehaviour
 
 
     //Start is called before the first frame update
-    void Start()
-    {
-        anotherTimer = Random.Range(3f, 5f);
+    //void Start()
+    //{
+    //    anotherTimer = Random.Range(3f, 5f);
         
-    }
+    //}
     //    col = 50;
     //    row = 50;
 
@@ -103,11 +103,23 @@ public class Manager : MonoBehaviour
         gameObjects.Remove(cube);
         
     }
+
+    public void TimeDestroyGameObject(GameObject cube)
+    {
+        int value = -1;
+        if (cube.GetComponent<ItemBehaviour>().isBlue) value = -3;
+        score += value;
+        PlayerPrefs.SetInt("score", score);
+        Destroy(cube);
+        gameObjects.Remove(cube);
+
+
+    }
     void Update()
     {
         timer -= Time.deltaTime;
         otherTimer -= Time.deltaTime;
-        anotherTimer -= Time.deltaTime;
+        //anotherTimer -= Time.deltaTime;
 
         if (timer <= 0f)
         {
@@ -131,16 +143,16 @@ public class Manager : MonoBehaviour
             
         }
 
-        if (anotherTimer <= 0f)
-        {
-            int malus = -1;
-            if (.GetComponent<ItemBehaviour>().isBlue) malus = -3;
-            Destroy(gameObjects[gameObjects.Count-1]);
-            score -= malus;
-            gameObjects.Remove(gameObjects[gameObjects.Count-1]);
+        //if (anotherTimer <= 0f)
+        //{
+        //    int malus = -1;
+        //    if (gameObject.GetComponent<ItemBehaviour>().isBlue) malus = -3;
+        //    Destroy(gameObjects[gameObjects.Count-1]);
+        //    score -= malus;
+        //    gameObjects.Remove(gameObjects[gameObjects.Count-1]);
            
-            anotherTimer = Random.Range(3f, 5f);
-        }
+        //    anotherTimer = Random.Range(3f, 5f);
+        //}
 
         
 
