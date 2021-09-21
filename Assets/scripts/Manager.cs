@@ -27,18 +27,33 @@ public class Manager : MonoBehaviour
 
     private float timer = 0.5f;
     private float otherTimer = 5f;
+<<<<<<< HEAD
    
+=======
+    //public float anotherTimer;
+>>>>>>> origin/master
 
     public List<GameObject> gameObjects = new List<GameObject>();
     private int nbrCube = 1;
 
     public int score = 0;
 
+<<<<<<< HEAD
     private void Start()
     {
         PlayerPrefs.SetInt("score", 0);
         
     }
+=======
+    //Start is called before the first frame update
+    //void Start()
+    //{
+    //    anotherTimer = Random.Range(3f, 5f);
+        
+    //}
+    //    col = 50;
+    //    row = 50;
+>>>>>>> origin/master
 
     public void CreateCube()
     {
@@ -96,17 +111,25 @@ public class Manager : MonoBehaviour
         PlayerPrefs.SetInt("score", score);
         Destroy(cube);
         gameObjects.Remove(cube);
+<<<<<<< HEAD
         if (score <= 0)
         {
             whenLose?.Invoke();
         }
+=======
+
+>>>>>>> origin/master
 
     }
     void Update()
     {
         timer -= Time.deltaTime;
         otherTimer -= Time.deltaTime;
+<<<<<<< HEAD
      
+=======
+        //anotherTimer -= Time.deltaTime;
+>>>>>>> origin/master
 
         if (timer <= 0f)
         {
@@ -130,6 +153,22 @@ public class Manager : MonoBehaviour
             
         }
 
+<<<<<<< HEAD
        
+=======
+        //if (anotherTimer <= 0f)
+        //{
+        //    int malus = -1;
+        //    if (gameObject.GetComponent<ItemBehaviour>().isBlue) malus = -3;
+        //    Destroy(gameObjects[gameObjects.Count-1]);
+        //    score -= malus;
+        //    gameObjects.Remove(gameObjects[gameObjects.Count-1]);
+           
+        //    anotherTimer = Random.Range(3f, 5f);
+        //}
+
+        
+
+>>>>>>> origin/master
     }
 }

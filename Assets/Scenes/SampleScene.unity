@@ -401,11 +401,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
 --- !u!114 &736776377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 2589079487663813035, guid: 94d31bedc1aea18428a32e2bb06b599f, type: 3}
   m_PrefabInstance: {fileID: 0}
+=======
+--- !u!114 &736776377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2589079487663813035, guid: 94d31bedc1aea18428a32e2bb06b599f, type: 3}
+  m_PrefabInstance: {fileID: 6479794059586156690}
+>>>>>>> origin/master
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -413,11 +420,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196ae1c87d3b6f540af3ed4cf6107205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   manager: {fileID: 0}
   mouseOver: 0
   isBlue: 0
   theTime: 0
   anotherTimer: 0
+=======
+>>>>>>> origin/master
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf8702458258794aa0843dbfadc303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   whenWin:
     m_PersistentCalls:
       m_Calls:
@@ -861,6 +872,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   scoreMax: 100
+=======
+>>>>>>> origin/master
   itemBehaviour: {fileID: 736776377}
   materials: []
   defaultMaterial: {fileID: 2100000, guid: 3beca007ffa5a964f87fee7c7ec813c4, type: 2}
