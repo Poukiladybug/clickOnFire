@@ -34,6 +34,7 @@ public class Manager : MonoBehaviour
     private int nbrCube = 1;
 
     public int score = 0;
+    public Vector3 generalPosition = new Vector3(50*1.5f, 50 * 1.5f, 50 * 1.5f);
 
 
     private void Start()
@@ -137,5 +138,12 @@ public class Manager : MonoBehaviour
         }
 
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0.1f, 0.5f, 0f, 0.5f);
+        Gizmos.DrawCube(transform.position + generalPosition / 2, generalPosition);
+        
     }
 }
