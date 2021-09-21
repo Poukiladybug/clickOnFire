@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour
 
     private int row;
     private int col;
+    private int depth;
 
     public ItemBehaviour itemBehaviour;
 
@@ -47,14 +48,16 @@ public class Manager : MonoBehaviour
         if (gameObjects.Count >= 10) return;
         col = 50;
         row = 50;
+        depth = 50;
         
         int x = Random.Range(0, col);
         int z = Random.Range(0, row);
+        int w = Random.Range(0, depth);
         int y = Random.Range(0, 5);
         
 
        
-            Vector3 position = new Vector3(x * gapCol, 0, z * gapRow);
+            Vector3 position = new Vector3(x * gapCol, w*gapCol, z * gapRow);
             GameObject item = Instantiate(itemPrefab, position, Quaternion.identity);
             if (y >= 4)
             {
