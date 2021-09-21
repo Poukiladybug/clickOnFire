@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class Manager : MonoBehaviour
 
 {
-   
+
+    public UnityEvent whenWin;
+    public UnityEvent whenLose;
+    public int scoreMax = 100;
 
     private int row;
     private int col;
@@ -24,45 +27,22 @@ public class Manager : MonoBehaviour
 
     private float timer = 0.5f;
     private float otherTimer = 5f;
-    public float anotherTimer;
+   
 
     public List<GameObject> gameObjects = new List<GameObject>();
     private int nbrCube = 1;
 
-    public int score;
-    private int bonusScore;
+    public int score = 0;
 
-
-
-
-
-
-    //Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        anotherTimer = Random.Range(3f, 5f);
+        PlayerPrefs.SetInt("score", 0);
         
     }
-    //    col = 50;
-    //    row = 50;
 
-    //    int x = Random.Range(0, col);
-    //    int z = Random.Range(0, row);
-
-
-
-    //    Vector3 position = new Vector3(x * gapCol, 0, z * gapRow);
-    //    GameObject item = Instantiate(itemPrefab, position, Quaternion.identity);
-    //    item.GetComponent<Renderer>().material = defaultMaterial;
-    //    item.GetComponent<ItemBehaviour>();
-
-
-    //}
-
-    // Update is called once per frame
-   
     public void CreateCube()
     {
+        if (gameObjects.Count >= 10) return;
         col = 50;
         row = 50;
         
@@ -74,7 +54,7 @@ public class Manager : MonoBehaviour
        
             Vector3 position = new Vector3(x * gapCol, 0, z * gapRow);
             GameObject item = Instantiate(itemPrefab, position, Quaternion.identity);
-            if (y >= 3)
+            if (y >= 4)
             {
                 item.GetComponent<Renderer>().material = bonusMaterial;
                
@@ -101,23 +81,42 @@ public class Manager : MonoBehaviour
         PlayerPrefs.SetInt("score", score); 
         Destroy(cube);
         gameObjects.Remove(cube);
+        if (score >= scoreMax)
+        {
+            whenWin?.Invoke();
+        }
         
+    }
+
+    public void TimeDestroyGameObject(GameObject cube)
+    {
+        int value = -1;
+        if (cube.GetComponent<ItemBehaviour>().isBlue) value = -3;
+        score += value;
+        PlayerPrefs.SetInt("score", score);
+        Destroy(cube);
+        gameObjects.Remove(cube);
+        if (score <= 0)
+        {
+            whenLose?.Invoke();
+        }
+
     }
     void Update()
     {
         timer -= Time.deltaTime;
         otherTimer -= Time.deltaTime;
-        anotherTimer -= Time.deltaTime;
+     
 
         if (timer <= 0f)
         {
             
             for (int a = 1; a <= nbrCube; a++)
             {
-                if (gameObjects.Count <= 10)
-                {
-                    CreateCube();
-                }
+                
+                
+                CreateCube();
+                
                
             }
         }
@@ -131,18 +130,6 @@ public class Manager : MonoBehaviour
             
         }
 
-        if (anotherTimer <= 0f)
-        {
-            int malus = -1;
-            if (.GetComponent<ItemBehaviour>().isBlue) malus = -3;
-            Destroy(gameObjects[gameObjects.Count-1]);
-            score -= malus;
-            gameObjects.Remove(gameObjects[gameObjects.Count-1]);
-           
-            anotherTimer = Random.Range(3f, 5f);
-        }
-
-        
-
+       
     }
 }

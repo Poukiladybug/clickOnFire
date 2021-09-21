@@ -123,6 +123,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &442011551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442011553}
+  - component: {fileID: 442011552}
+  m_Layer: 0
+  m_Name: SceneChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &442011552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442011551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193c25e1e8d1cf8479dc774b62da22d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &442011553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442011551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.180065, y: -2.742054, z: -6.20343}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565313859
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b1e4e3a44f59a46baecb799ae157d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   scoreText: {fileID: 1355287115}
   score: 0
 --- !u!4 &640967292
@@ -357,6 +401,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &736776377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2589079487663813035, guid: 94d31bedc1aea18428a32e2bb06b599f, type: 3}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196ae1c87d3b6f540af3ed4cf6107205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  mouseOver: 0
+  isBlue: 0
+  theTime: 0
+  anotherTimer: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,10 +633,10 @@ RectTransform:
   m_Father: {fileID: 976487783}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -278.902, y: 90.069, z: -0.024}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -463.27295, y: -252.8}
-  m_SizeDelta: {x: 132.4346, y: 16.6707}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1013.77295, y: -512.3}
+  m_SizeDelta: {x: 132.43457, y: 16.670715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355287115
 MonoBehaviour:
@@ -597,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: '
+  m_text: 'Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -769,12 +830,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf8702458258794aa0843dbfadc303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemBehaviour: {fileID: 0}
+  whenWin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 442011552}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: Change
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WinScene
+          m_BoolArgument: 0
+        m_CallState: 2
+  whenLose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 442011552}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: Change
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lose
+          m_BoolArgument: 0
+        m_CallState: 2
+  scoreMax: 100
+  itemBehaviour: {fileID: 736776377}
   materials: []
   defaultMaterial: {fileID: 2100000, guid: 3beca007ffa5a964f87fee7c7ec813c4, type: 2}
   bonusMaterial: {fileID: 2100000, guid: 9804141928439244cb82b61eea987072, type: 2}
   itemPrefab: {fileID: 492072623874313948, guid: 94d31bedc1aea18428a32e2bb06b599f, type: 3}
-  anotherTimer: 0
   gameObjects: []
   score: 0
 --- !u!4 &1920613542

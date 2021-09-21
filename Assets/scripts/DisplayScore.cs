@@ -5,12 +5,16 @@ using TMPro;
 
 public class DisplayScore : MonoBehaviour
 {
+    public Manager manager;
     public TextMeshProUGUI scoreText;
     public int score;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        if (manager == null)
+        {
+            manager = FindObjectOfType<Manager>();
+        }
     }
 
     // Update is called once per frame
